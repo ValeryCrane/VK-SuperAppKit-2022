@@ -8,7 +8,7 @@
 import Foundation
 
 class InfoDataSource {
-    public func getInfoBatch(startIndex: Int, batchSize: Int) -> [InfoModel] {
+    public static func getInfoBatch(startIndex: Int, batchSize: Int) -> [InfoModel]? {
         var result: [InfoModel] = []
         for i in 0..<batchSize {
             result.append(InfoModel(id: startIndex + i,
@@ -18,4 +18,5 @@ class InfoDataSource {
         }
         return result
     }
+    private init() { }
 }
