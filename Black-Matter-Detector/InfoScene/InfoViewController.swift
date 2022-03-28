@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol InfoDisplayLogic {
+    func displayInfo(_ info: [PresentedInfoModel])
+}
+
 class InfoViewController: UIViewController {
     private let tableView = UITableView()
+    private var page: [PresentedInfoModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +47,12 @@ extension InfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         UITableViewCell()
     }
-    
-    
+}
+
+// MARK: - InfoDisplayLogic implementation.
+extension InfoViewController: InfoDisplayLogic {
+    func displayInfo(_ info: [PresentedInfoModel]) {
+        page = info
+        tableView.reloadData()
+    }
 }

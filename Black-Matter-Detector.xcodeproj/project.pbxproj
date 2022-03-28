@@ -17,6 +17,7 @@
 		4875F9BD27F1E7D3004176C8 /* InfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F9BC27F1E7D3004176C8 /* InfoInteractor.swift */; };
 		4875F9BF27F1E839004176C8 /* InfoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F9BE27F1E839004176C8 /* InfoConstants.swift */; };
 		4875F9C127F1EAEA004176C8 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F9C027F1EAEA004176C8 /* InfoPresenter.swift */; };
+		4875F9C327F1EDC1004176C8 /* PresentedInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F9C227F1EDC1004176C8 /* PresentedInfoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4875F9BC27F1E7D3004176C8 /* InfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInteractor.swift; sourceTree = "<group>"; };
 		4875F9BE27F1E839004176C8 /* InfoConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoConstants.swift; sourceTree = "<group>"; };
 		4875F9C027F1EAEA004176C8 /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
+		4875F9C227F1EDC1004176C8 /* PresentedInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentedInfoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				4875F9B827F1E4D5004176C8 /* InfoModel.swift */,
+				4875F9C227F1EDC1004176C8 /* PresentedInfoModel.swift */,
 				4875F9BA27F1E55B004176C8 /* InfoDataSource.swift */,
 			);
 			path = InfoModel;
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4875F9C327F1EDC1004176C8 /* PresentedInfoModel.swift in Sources */,
 				4875F9BD27F1E7D3004176C8 /* InfoInteractor.swift in Sources */,
 				4875F9BB27F1E55B004176C8 /* InfoDataSource.swift in Sources */,
 				4875F9C127F1EAEA004176C8 /* InfoPresenter.swift in Sources */,
