@@ -13,7 +13,7 @@ protocol InfoPresentationLogic {
 }
 
 class InfoPresenter {
-    public var view: InfoDisplayLogic!
+    public weak var view: InfoDisplayLogic!
     private var page: [PresentedInfoModel] = []
     
     private func presentInfo(_ info: [InfoModel]) -> [PresentedInfoModel] {
