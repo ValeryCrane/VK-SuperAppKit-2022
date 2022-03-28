@@ -86,8 +86,8 @@
 		4875F9B427F1E46D004176C8 /* InfoScene */ = {
 			isa = PBXGroup;
 			children = (
-				4875F9C627F1F2B8004176C8 /* View */,
 				4875F9BE27F1E839004176C8 /* InfoConstants.swift */,
+				4875F9C627F1F2B8004176C8 /* View */,
 				4875F9B527F1E47E004176C8 /* InfoViewController.swift */,
 				4875F9BC27F1E7D3004176C8 /* InfoInteractor.swift */,
 				4875F9C027F1EAEA004176C8 /* InfoPresenter.swift */,

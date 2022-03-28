@@ -8,13 +8,13 @@
 import Foundation
 
 protocol InfoPresentationLogic {
-    func presentInfoAtFront(_ info: [InfoModel])
-    func presentInfoAtBack(_ info: [InfoModel])
+    func presentInfoAtFront(_ info: [InfoModel])        // Presents info at front of the list.
+    func presentInfoAtBack(_ info: [InfoModel])         // Presents info at back of the list.
 }
 
 class InfoPresenter {
     public weak var view: InfoDisplayLogic!
-    private var page: [PresentedInfoModel] = []
+    private var page: [PresentedInfoModel] = []         // Current list
     
     private func presentInfo(_ info: [InfoModel]) -> [PresentedInfoModel] {
         return info.map { model in

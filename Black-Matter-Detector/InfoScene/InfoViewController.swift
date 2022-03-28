@@ -8,7 +8,7 @@
 import UIKit
 
 protocol InfoDisplayLogic: AnyObject {
-    func displayInfo(_ info: [PresentedInfoModel])
+    func displayInfo(_ info: [PresentedInfoModel])  // Displays new information.
 }
 
 class InfoViewController: UIViewController {
@@ -16,6 +16,7 @@ class InfoViewController: UIViewController {
     private let tableView = UITableView()
     private var page: [PresentedInfoModel] = []
 
+    // MARK: - ViewController's life cycle.
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -23,6 +24,7 @@ class InfoViewController: UIViewController {
         interactor.fetchInfo(startIndex: 0)
     }
     
+    // MARK: - config functions.
     private func configureTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,6 +42,7 @@ class InfoViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    // Creates UIView with UIActivityIndicatorView.
     private func configureLoadingCell() -> UIView {
         let cell = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
         let indicator = UIActivityIndicatorView()
@@ -64,6 +67,7 @@ extension InfoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Fetching info if necessary.
         if indexPath.row == page.count - 1 {
             interactor.fetchInfo(startIndex: page[indexPath.row].id + 1)
         }
@@ -81,19 +85,21 @@ extension InfoViewController: UITableViewDataSource {
 // MARK: - InfoDisplayLogic implementation.
 extension InfoViewController: InfoDisplayLogic {
     func displayInfo(_ info: [PresentedInfoModel]) {
-        var firstCell: Int? = nil
-        if tableView.indexPathsForVisibleRows?.count != 0 {
-            firstCell = tableView.indexPathsForVisibleRows?.sorted(by: { $0.row < $1.row })[0].row
+        // Getting top cell's id.
+        var topCellId: Int? = nil
+        let topCellrow = tableView.indexPathsForVisibleRows?.sorted(by: { $0.row < $1.row }).first?.row
+        if let topCellrow = topCellrow {
+            topCellId = page[topCellrow].id
         }
-        var firstCellId: Int? = nil
-        if let firstCell = firstCell {
-            firstCellId = page[firstCell].id
-        }
+
+        // Updating data
         page = info
         tableView.reloadData()
-        if let firstCellId = firstCellId {
+        
+        // Adjusting scroll
+        if let topCellId = topCellId {
             for i in 0..<page.count {
-                if page[i].id == firstCellId {
+                if page[i].id == topCellId {
                     tableView.scrollToRow(
                         at: IndexPath(row: i, section: 0),
                         at: .top,
@@ -102,6 +108,8 @@ extension InfoViewController: InfoDisplayLogic {
                 }
             }
         }
+        
+        // Adjusting loading animation.
         if !page.isEmpty && page[0].id != 0 {
             tableView.tableHeaderView = configureLoadingCell()
         } else {

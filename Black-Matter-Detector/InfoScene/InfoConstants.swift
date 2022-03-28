@@ -7,8 +7,9 @@
 
 import Foundation
 
+// Constansts.
 class InfoConstants {
-    public static let defaultBatchSize = 50
-    public static let defaultPageSize = 200
+    public static let defaultBatchSize = 20
+    public static let defaultPageSize = 100
     private init() { }
 }

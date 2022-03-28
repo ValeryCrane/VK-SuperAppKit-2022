@@ -8,8 +8,8 @@
 import Foundation
 
 protocol InfoBusinessLogic {
-    func fetchInfo(startIndex: Int)
-    func fetchInfo(endIndex: Int)
+    func fetchInfo(startIndex: Int)     // Fetches info at back of the list.
+    func fetchInfo(endIndex: Int)       // Fetches info at front of the list.
 }
 
 class InfoInteractor {
@@ -19,13 +19,9 @@ class InfoInteractor {
 // MARK: - InfoBusinessLogic implementation.
 extension InfoInteractor: InfoBusinessLogic {
     func fetchInfo(startIndex: Int) {
-        DispatchQueue.global(qos: .background).async { [weak self] in
-            let fetchResult = InfoDataSource.getInfoBatch(
-                startIndex: startIndex,
-                batchSize: InfoConstants.defaultBatchSize
-            )
+        InfoDataSource.getInfoBatch(startIndex: startIndex,
+                                    batchSize: InfoConstants.defaultBatchSize) { [weak self] fetchResult in
             guard let fetchResult = fetchResult else { return }
-            
             self?.presenter.presentInfoAtBack(fetchResult)
         }
     }
@@ -38,13 +34,9 @@ extension InfoInteractor: InfoBusinessLogic {
             batchSize += startIndex
             startIndex = 0
         }
-        DispatchQueue.global(qos: .background).async { [weak self] in
-            let fetchResult = InfoDataSource.getInfoBatch(
-                startIndex: startIndex,
-                batchSize: batchSize
-            )
+        InfoDataSource.getInfoBatch(startIndex: startIndex,
+                                    batchSize: batchSize) { [weak self] fetchResult in
             guard let fetchResult = fetchResult else { return }
-            
             self?.presenter.presentInfoAtFront(fetchResult)
         }
     }

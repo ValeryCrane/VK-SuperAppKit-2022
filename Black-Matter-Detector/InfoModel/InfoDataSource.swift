@@ -8,7 +8,9 @@
 import Foundation
 
 class InfoDataSource {
-    public static func getInfoBatch(startIndex: Int, batchSize: Int) -> [InfoModel]? {
+    // Creates randomly generated batch of information and waits for a couple of milliseconds.
+    public static func getInfoBatch(startIndex: Int, batchSize: Int,
+                                    completionHandler: @escaping ([InfoModel]?) -> Void) {
         var result: [InfoModel] = []
         for i in 0..<batchSize {
             result.append(InfoModel(id: startIndex + i,
@@ -16,7 +18,11 @@ class InfoDataSource {
                                     value: Float.random(in: 0..<10)
                                    ))
         }
-        return result
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.3) {
+            completionHandler(result)
+        }
     }
+    
+    // So to make InfoDataSource a singleton.
     private init() { }
 }

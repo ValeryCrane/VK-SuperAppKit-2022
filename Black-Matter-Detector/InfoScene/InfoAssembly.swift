@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Assembles InfoScene.
 class InfoAssembly {
     static func assemble() -> UIViewController {
         let view = InfoViewController()

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Class of cell for the list
 class InfoTableViewCell: UITableViewCell {
     public static let reuseIdentifier = "InfoCell"
     private let indexLabel = UILabel()
@@ -20,11 +21,13 @@ class InfoTableViewCell: UITableViewCell {
         
     }
     
+    // Setups cell uding passed information.
     func setup(info: PresentedInfoModel) {
         indexLabel.text = "\(info.id)"
         infoLabel.text = info.info
     }
     
+    // Layouts the cell.
     private func layoutInfo() {
         self.addSubview(indexLabel)
         self.addSubview(infoLabel)
